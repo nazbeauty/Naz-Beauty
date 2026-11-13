@@ -1,170 +1,901 @@
-
 <!DOCTYPE html>
 <html lang="ku" dir="rtl">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Naz Beauty | Original Beauty Products</title>
-<meta name="description" content="Naz Beauty - Original Beauty Products from the UK">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:Arial,sans-serif;background:#fffafb;color:#39252c}
-header{background:#fff;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid #f2dce4}
-.logo{font-family:Georgia,serif;font-size:30px;font-weight:bold;color:#9d3459}
-.logo span{color:#d99aab}
-button{cursor:pointer;border:0}
-.lang{background:#9d3459;color:white;padding:10px 16px;border-radius:20px}
-.hero{background:linear-gradient(120deg,#f8e6ec,#fff8fa,#f4dce5);text-align:center;padding:75px 18px}
-.hero h1{font-family:Georgia,serif;color:#963653;font-size:42px;margin-bottom:15px}
-.hero p{font-size:17px;line-height:2;color:#72535e}
-.hero button{background:#963653;color:white;padding:14px 30px;border-radius:25px;margin-top:24px;font-size:16px}
-.section{padding:48px 5%;text-align:center}
-.section h2{font-family:Georgia,serif;color:#963653;font-size:28px;margin-bottom:12px}
-.sub{color:#92747e;margin-bottom:28px}
-.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px}
-.category{background:white;border:1px solid #f0dce3;border-radius:16px;padding:25px 10px;cursor:pointer;transition:.2s}
-.category:hover{transform:translateY(-4px);box-shadow:0 6px 20px #ead4dc}
-.category .emoji{font-size:35px;margin-bottom:12px}
-.category h3{font-size:15px;color:#79334d}
-.search{width:min(100%,450px);padding:13px;border:1px solid #e7cbd5;border-radius:25px;margin:10px auto 25px;display:block;font-size:15px}
-.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
-.empty{background:#fff;padding:35px 15px;border-radius:15px;border:1px dashed #dcb8c6;color:#92747e;line-height:2;grid-column:1/-1}
-.about{background:#f9eaf0;line-height:2.2}
-.contact{background:#fff;padding:45px 15px;text-align:center;line-height:2}
-.contact a{color:#963653;text-decoration:none;font-weight:bold}
-footer{background:#633047;color:white;text-align:center;padding:25px;line-height:2}
-.hidden{display:none}
-#cart{position:fixed;bottom:20px;left:20px;background:#963653;color:white;padding:14px 20px;border-radius:30px;box-shadow:0 3px 15px #b98b9b;z-index:5}
-@media(max-width:500px){.hero h1{font-size:32px}.hero{padding:55px 15px}.logo{font-size:25px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Naz Beauty | ناز بیوتی</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #e87a90;
+            --dark-pink: #c24d67;
+            --soft-pink: #fff0f4;
+            --bg-color: #fff9fb;
+            --text-dark: #3d2c32;
+            --text-muted: #7a636b;
+            --white: #ffffff;
+            --shadow: 0 8px 20px rgba(232, 122, 144, 0.12);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Kufi Arabic', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            padding-bottom: 80px;
+        }
+
+        /* Header & Hero Section */
+        header {
+            background: linear-gradient(135deg, #ffe3ec 0%, #ffc2d4 100%);
+            text-align: center;
+            padding: 35px 20px 30px;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .brand-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            color: var(--dark-pink);
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .brand-slogan {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 6px;
+        }
+
+        .brand-origin {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.75);
+            color: var(--dark-pink);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(232, 122, 144, 0.3);
+        }
+
+        /* Navigation Categories (App Style) */
+        .nav-container {
+            position: sticky;
+            top: 0;
+            z-index: 90;
+            background: rgba(255, 249, 251, 0.95);
+            backdrop-filter: blur(8px);
+            padding: 15px 10px;
+            border-bottom: 1px solid #fce4ec;
+        }
+
+        .categories {
+            display: flex;
+            overflow-x: auto;
+            gap: 10px;
+            padding-bottom: 5px;
+            scrollbar-width: none;
+        }
+
+        .categories::-webkit-scrollbar {
+            display: none;
+        }
+
+        .cat-btn {
+            background: var(--white);
+            border: 1.5px solid #f8bbd0;
+            color: var(--text-dark);
+            padding: 8px 18px;
+            border-radius: 25px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            white-space: nowrap;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Playfair Display', 'Noto Kufi Arabic', sans-serif;
+        }
+
+        .cat-btn.active, .cat-btn:hover {
+            background: var(--primary-pink);
+            color: var(--white);
+            border-color: var(--primary-pink);
+            box-shadow: 0 4px 12px rgba(232, 122, 144, 0.3);
+        }
+
+        /* Search Bar */
+        .search-box {
+            max-width: 600px;
+            margin: 15px auto 5px;
+            padding: 0 15px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 20px;
+            border-radius: 25px;
+            border: 1.5px solid #f8bbd0;
+            background: var(--white);
+            outline: none;
+            font-size: 0.9rem;
+            text-align: right;
+        }
+
+        /* Home Section Banner */
+        .section-title {
+            text-align: center;
+            margin: 20px 0 15px;
+            font-size: 1.3rem;
+            color: var(--dark-pink);
+            font-weight: 700;
+        }
+
+        /* Products Grid */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(165px, 1fr));
+            gap: 15px;
+            padding: 10px 15px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 22px;
+            padding: 12px;
+            box-shadow: var(--shadow);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s;
+            border: 1px solid #fff0f5;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+        }
+
+        .product-img-wrap {
+            width: 100%;
+            height: 155px;
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--soft-pink);
+            cursor: pointer;
+            position: relative;
+        }
+
+        .product-img-wrap img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .view-details-badge {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark-pink);
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding-top: 10px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .product-cat {
+            font-size: 0.7rem;
+            color: var(--primary-pink);
+            font-weight: 600;
+        }
+
+        .product-name {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin: 3px 0;
+            color: var(--text-dark);
+        }
+
+        .product-price {
+            font-size: 0.95rem;
+            color: var(--dark-pink);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-pink), var(--dark-pink));
+            color: var(--white);
+            border: none;
+            padding: 9px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            transition: opacity 0.2s;
+        }
+
+        .add-to-cart-btn:active {
+            transform: scale(0.97);
+        }
+
+        /* Floating Cart Button */
+        .floating-cart {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--dark-pink);
+            color: var(--white);
+            padding: 13px 22px;
+            border-radius: 30px;
+            box-shadow: 0 8px 25px rgba(194, 77, 103, 0.45);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            z-index: 100;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        /* Modals (Product Details & Cart) */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(61, 44, 50, 0.55);
+            backdrop-filter: blur(4px);
+            z-index: 200;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        .modal-content {
+            background: var(--white);
+            width: 100%;
+            max-width: 550px;
+            max-height: 90vh;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            padding: 25px 20px;
+            overflow-y: auto;
+            position: relative;
+            animation: slideUp 0.3s ease;
+        }
+
+        @keyframes slideUp {
+            from { transform: translateY(100%); }
+            to { transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 18px;
+            left: 20px;
+            background: var(--soft-pink);
+            color: var(--dark-pink);
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            font-size: 1.1rem;
+            cursor: pointer;
+        }
+
+        /* Product Detail Modal Specifics */
+        .detail-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 15px;
+        }
+
+        .detail-size-badge {
+            display: inline-block;
+            background: var(--soft-pink);
+            color: var(--dark-pink);
+            padding: 5px 14px;
+            border-radius: 12px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin: 8px 0;
+        }
+
+        .detail-desc {
+            font-size: 0.92rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin: 12px 0 20px;
+            background: #fff9fb;
+            padding: 12px;
+            border-radius: 15px;
+            border: 1px dashed #f8bbd0;
+        }
+
+        /* Cart & Checkout Styling */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #fce4ec;
+        }
+
+        .qty-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .qty-btn {
+            background: var(--soft-pink);
+            color: var(--dark-pink);
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .total-box {
+            background: var(--soft-pink);
+            padding: 15px;
+            border-radius: 18px;
+            margin: 15px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--dark-pink);
+        }
+
+        .checkout-form {
+            margin-top: 15px;
+            border-top: 2px dashed #f8bbd0;
+            padding-top: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 12px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 11px 14px;
+            border-radius: 14px;
+            border: 1.5px solid #f8bbd0;
+            outline: none;
+            font-size: 0.9rem;
+        }
+
+        .payment-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 8px;
+        }
+
+        .pay-option {
+            border: 1.5px solid #f8bbd0;
+            border-radius: 15px;
+            padding: 12px;
+            text-align: center;
+            cursor: pointer;
+            font-size: 0.85rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .pay-option.selected {
+            background: var(--soft-pink);
+            border-color: var(--dark-pink);
+            color: var(--dark-pink);
+        }
+
+        .fib-info-box {
+            display: none;
+            background: #e8f5e9;
+            border: 1px solid #a5d6a7;
+            color: #1b5e20;
+            padding: 12px;
+            border-radius: 14px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .submit-order-btn {
+            width: 100%;
+            background: linear-gradient(135deg, #25D366, #128C7E);
+            color: white;
+            border: none;
+            padding: 14px;
+            border-radius: 18px;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-top: 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        /* Support / Contact Section at Bottom */
+        .support-footer {
+            max-width: 600px;
+            margin: 40px auto 20px;
+            padding: 20px;
+            background: var(--white);
+            border-radius: 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            border: 1px solid #fce4ec;
+        }
+
+        .support-footer h3 {
+            color: var(--dark-pink);
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+        }
+
+        .support-footer p {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+        }
+
+        .support-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--soft-pink);
+            color: var(--dark-pink);
+            text-decoration: none;
+            padding: 10px 22px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid var(--primary-pink);
+        }
+
+        @media (min-width: 600px) {
+            .modal-overlay { align-items: center; }
+            .modal-content { border-radius: 30px; }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-<div class="logo">Naz <span>Beauty</span> 🎀</div>
-<button class="lang" onclick="changeLang()">English / کوردی</button>
-</header>
+    <!-- سەرەتای ئەپەکە (Header) -->
+    <header>
+        <div class="brand-logo">🎀 Naz Beauty 🎀</div>
+        <div class="brand-slogan">(کوالێتی، دڵنیایی، متمانە)</div>
+        <div class="brand-origin">🇬🇧 بەرهەمەکانمان ئۆرجیناڵی وڵاتی بەڕیتانیان</div>
+    </header>
 
-<section class="hero">
-<h1 id="heroTitle">بەخێربێن بۆ ناز بیوتی</h1>
-<p id="heroText">جوانییەکەت بەرهەمی ڕەسەن و کوالێتی بەرز دەوێت.<br>هەڵبژاردەیەکی تایبەت لە بەرهەمە جوانکارییەکانی بەریتانیا.</p>
-<button onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})" id="shopBtn">بینینی بەرهەمەکان</button>
-</section>
+    <!-- بەشەکان (Categories) -->
+    <div class="nav-container">
+        <div class="categories" id="categoryBar">
+            <button class="cat-btn active" onclick="filterCategory('Home', this)">🏠 Home Page</button>
+            <button class="cat-btn" onclick="filterCategory('Makeup', this)">💄 Makeup</button>
+            <button class="cat-btn" onclick="filterCategory('Perfume', this)">🌸 Perfume</button>
+            <button class="cat-btn" onclick="filterCategory('Skin care', this)">🧴 Skin care</button>
+            <button class="cat-btn" onclick="filterCategory('Hair care', this)">🎀 Hair care</button>
+            <button class="cat-btn" onclick="filterCategory('Sample perfume', this)">🧪 Sample perfume</button>
+            <button class="cat-btn" onclick="filterCategory('Home perfume', this)">🏡 Home perfume</button>
+        </div>
+    </div>
 
-<section class="section" id="categories">
-<h2 id="catTitle">بەشەکانی ناز بیوتی</h2>
-<p class="sub" id="catSub">بەشی دڵخوازت هەڵبژێرە</p>
-<div class="categories">
-<div class="category" onclick="showCategory('makeup')"><div class="emoji">💄</div><h3 id="c1">میکاپ</h3></div>
-<div class="category" onclick="showCategory('skincare')"><div class="emoji">🧴</div><h3 id="c2">چاودێری پێست</h3></div>
-<div class="category" onclick="showCategory('perfume')"><div class="emoji">🌸</div><h3 id="c3">بۆن</h3></div>
-<div class="category" onclick="showCategory('haircare')"><div class="emoji">🎀</div><h3 id="c4">چاودێری قژ</h3></div>
-<div class="category" onclick="showCategory('home')"><div class="emoji">🏡</div><h3 id="c5">بۆنی ناوماڵ</h3></div>
-<div class="category" onclick="showCategory('diffuser')"><div class="emoji">🪻</div><h3 id="c6">بۆنی دابەشکاری</h3></div>
-</div>
-</section>
+    <!-- گەڕان -->
+    <div class="search-box">
+        <input type="text" id="searchInput" onkeyup="searchProducts()" placeholder="🔍 گەڕان بەدوای بەرهەمەکانی ناز بیوتی...">
+    </div>
 
-<section class="section" id="products">
-<h2 id="productTitle">بەرهەمەکانمان</h2>
-<input class="search" id="search" placeholder="گەڕان بەدوای بەرهەم..." oninput="searchProducts()">
-<div class="products" id="productGrid">
-<div class="empty" id="empty">
-🌷 بە زوویی بەرهەمە جوانەکانمان لێرە دادەنێین.
-<br>Stay tuned for our original beauty products!
-</div>
-</div>
-</section>
+    <div class="section-title" id="currentSectionTitle">هەموو بەرهەمەکان (Home Page)</div>
 
-<section class="section about">
-<h2 id="aboutTitle">بۆچی Naz Beauty؟</h2>
-<p id="aboutText">ئێمە گرنگی بە کوالێتی، متمانە و ڕەسەنایەتی دەدەین. هەڵبژاردەیەکی تایبەت لە براندە جیاوازەکان، بەرهەمی ڕەسەن و کوالێتی باش لە بەریتانیاوە.</p>
-</section>
+    <!-- لیستی بەرهەمەکان -->
+    <div class="products-grid" id="productsGrid"></div>
 
-<section class="contact">
-<h2 id="contactTitle">پەیوەندیمان پێوە بکە</h2>
-<p id="contactText">بۆ زانیاری و داواکاری، لە ڕێگەی پەیجەکانمانەوە پەیوەندیمان پێوە بکەن.</p>
-<p>Instagram: <a href="https://instagram.com/nazz._.beautyy" target="_blank">@nazz._.beautyy</a></p>
-<p>Snapchat: <a href="https://www.snapchat.com/add/nazz.beautyy" target="_blank">nazz.beautyy</a></p>
-<p>TikTok: <a href="https://www.tiktok.com/@nazz._.beautyy" target="_blank">nazz._.beautyy</a></p>
-</section>
+    <!-- بەشی پەیوەندیکردن لە کاتی هەبوونی کێشە -->
+    <div style="padding: 0 15px;">
+        <div class="support-footer">
+            <h3><i class="fas fa-headset"></i> پێویستت بە هاوکارییە یان کێشەیەکت هەیە؟</h3>
+            <p>تیمی ناز بیوتی هەمیشە ئامادەیە بۆ وەڵامدانەوەی پرسیار و کێشەکانتان بە خۆشحاڵییەوە.</p>
+            <!-- لێرە ژمارە تەلەفۆن یان واتسئەپەکەت بگۆڕە -->
+            <a href="https://wa.me/9647700000000?text=سڵاو%20ناز%20بیوتی،%20پرسیارێکم%20هەیە" target="_blank" class="support-btn">
+                <i class="fab fa-whatsapp"></i> پەیوەندیمان پێوە بکە
+            </a>
+        </div>
+    </div>
 
-<footer>
-<div>🎀 Naz Beauty 🎀</div>
-<div id="footerText">Original Products | Beauty from the UK</div>
-<div>© 2026 Naz Beauty</div>
-</footer>
+    <!-- دوگمەی سەبەتەی کڕین -->
+    <div class="floating-cart" onclick="openCart()">
+        <i class="fas fa-shopping-bag"></i>
+        <span>سەبەتە (<span id="cartCount">0</span>)</span>
+    </div>
 
-<button id="cart" onclick="showCart()">🛍️ <span id="cartText">سەبەتە</span> (<span id="cartCount">0</span>)</button>
+    <!-- پەنجەرەی زانیاری و قەبارەی بەرهەم -->
+    <div class="modal-overlay" id="productModal" onclick="closeModalOnBg(event, 'productModal')">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('productModal')"><i class="fas fa-times"></i></button>
+            <img id="modalImg" src="" alt="" class="detail-img">
+            <span id="modalCat" class="product-cat"></span>
+            <h2 id="modalTitle" style="margin-top: 4px; color: var(--text-dark);"></h2>
+            <div id="modalSize" class="detail-size-badge"></div>
+            <div id="modalPrice" style="font-size: 1.2rem; font-weight: 700; color: var(--dark-pink); margin-top: 5px;"></div>
+            <div id="modalDesc" class="detail-desc"></div>
+            <button id="modalAddBtn" class="add-to-cart-btn" style="padding: 13px; font-size: 0.95rem;">
+                <i class="fas fa-cart-plus"></i> زیادکردن بۆ سەبەتە
+            </button>
+        </div>
+    </div>
 
-<script>
-let english=false;
-let selectedCategory='all';
-let cart=[];
+    <!-- پەنجەرەی سەبەتە و داواکردنی کاڵا -->
+    <div class="modal-overlay" id="cartModal" onclick="closeModalOnBg(event, 'cartModal')">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeModal('cartModal')"><i class="fas fa-times"></i></button>
+            <h2 style="color: var(--dark-pink); margin-bottom: 15px;"><i class="fas fa-shopping-bag"></i> سەبەتەی کڕین</h2>
+            
+            <div id="cartItemsList"></div>
 
-// بەرهەمەکان دواتر لێرە زیاد دەکرێن
-const products=[];
+            <!-- کۆی گشتی پارە -->
+            <div class="total-box">
+                <span>کۆی گشتی پارە:</span>
+                <span id="cartTotal">0 د.ع</span>
+            </div>
 
-function changeLang(){
- english=!english;
- document.documentElement.lang=english?'en':'ku';
- document.documentElement.dir=english?'ltr':'rtl';
- const t={
- ku:['بەخێربێن بۆ ناز بیوتی','جوانییەکەت بەرهەمی ڕەسەن و کوالێتی بەرز دەوێت.<br>هەڵبژاردەیەکی تایبەت لە بەرهەمە جوانکارییەکانی بەریتانیا.','بینینی بەرهەمەکان','بەشەکانی ناز بیوتی','بەشی دڵخوازت هەڵبژێرە','میکاپ','چاودێری پێست','بۆن','چاودێری قژ','بۆنی ناوماڵ','بۆنی دابەشکاری','بەرهەمەکانمان','گەڕان بەدوای بەرهەم...','🌷 بە زوویی بەرهەمە جوانەکانمان لێرە دادەنێین.','بۆچی Naz Beauty؟','ئێمە گرنگی بە کوالێتی، متمانە و ڕەسەنایەتی دەدەین. هەڵبژاردەیەکی تایبەت لە براندە جیاوازەکان، بەرهەمی ڕەسەن و کوالێتی باش لە بەریتانیاوە.','پەیوەندیمان پێوە بکە','بۆ زانیاری و داواکاری، لە ڕێگەی پەیجەکانمانەوە پەیوەندیمان پێوە بکەن.','سەبەتە','Original Products | Beauty from the UK'],
- en:['Welcome to Naz Beauty','Discover original beauty products and trusted quality.<br>A special selection of beauty products from the UK.','Explore Products','Shop by Category','Choose your favourite category','Makeup','Skincare','Perfumes','Haircare','Home Fragrance','Diffuser Scents','Our Products','Search products...','🌷 Our beautiful products will be available here soon.','Why Naz Beauty?','We care about quality, trust and authenticity. A special selection of different brands and original beauty products from the UK.','Contact Us','For information and orders, contact us through our social media pages.','Cart','Original Products | Beauty from the UK']
- };
- let a=english?t.en:t.ku;
- ['heroTitle','heroText','shopBtn','catTitle','catSub','c1','c2','c3','c4','c5','c6','productTitle'].forEach((id,i)=>document.getElementById(id).innerHTML=a[i]);
- document.getElementById('search').placeholder=a[12];
- document.getElementById('empty').innerHTML=a[13]+'<br>Stay tuned for our original beauty products!';
- document.getElementById('aboutTitle').innerHTML=a[14];
- document.getElementById('aboutText').innerHTML=a[15];
- document.getElementById('contactTitle').innerHTML=a[16];
- document.getElementById('contactText').innerHTML=a[17];
- document.getElementById('cartText').innerHTML=a[18];
- document.getElementById('footerText').innerHTML=a[19];
-}
+            <!-- فۆڕمی داواکردنی کاڵا -->
+            <div class="checkout-form" id="checkoutSection">
+                <h3 style="font-size: 1rem; color: var(--dark-pink); margin-bottom: 12px;">زانیارییەکانی کڕیار بۆ ناردنی داواکاری:</h3>
+                
+                <div class="form-group">
+                    <label>ناوی خۆت و باوکت (ناوی سیانی):</label>
+                    <input type="text" id="custName" placeholder="نموونە: نازەنین ئەحمەد محەمەد">
+                </div>
 
-function showCategory(category){
- selectedCategory=category;
- document.getElementById('products').scrollIntoView({behavior:'smooth'});
- renderProducts();
-}
+                <div class="form-group">
+                    <label>ژمارە تەلەفۆن:</label>
+                    <input type="tel" id="custPhone" placeholder="0770 000 0000">
+                </div>
 
-function searchProducts(){
- renderProducts();
-}
+                <div class="form-group">
+                    <label>ناونیشانی تەواو (شار و گەڕەک):</label>
+                    <input type="text" id="custAddress" placeholder="نموونە: سلێمانی - بەختیاری">
+                </div>
 
-function renderProducts(){
- const grid=document.getElementById('productGrid');
- const term=document.getElementById('search').value.toLowerCase();
- const filtered=products.filter(p=>
- (selectedCategory==='all'||p.category===selectedCategory)&&
- p.name.toLowerCase().includes(term)
- );
- if(filtered.length===0){
- grid.innerHTML='<div class="empty">'+(english?'Products will be added soon.':'بە زوویی بەرهەمەکانمان زیاد دەکەین. 🌷')+'</div>';
- return;
- }
- grid.innerHTML=filtered.map((p,i)=>`
- <div class="category">
- <div class="emoji">🌸</div>
- <h3>${p.name}</h3>
- <p>${p.price}</p>
- <button class="lang" onclick="addToCart('${p.name}',${i})">${english?'Add to cart':'زیادکردن بۆ سەبەتە'}</button>
- </div>`).join('');
-}
+                <div class="form-group">
+                    <label>شێوازی پارەدان هەڵبژێرە:</label>
+                    <div class="payment-options">
+                        <div class="pay-option selected" id="payCash" onclick="selectPayment('Cash')">
+                            💵 کاش (لە کاتی گەیشتن)
+                        </div>
+                        <div class="pay-option" id="payFib" onclick="selectPayment('FIB')">
+                            💳 کارتی بانکی FIB
+                        </div>
+                    </div>
+                </div>
 
-function addToCart(name){
- cart.push(name);
- document.getElementById('cartCount').innerText=cart.length;
-}
-function showCart(){
- if(cart.length===0){
- alert(english?'Your cart is empty.':'سەبەتەکەت بەتاڵە.');
- }else{
- alert((english?'Your cart: ':'بەرهەمەکانت: ')+cart.join(', '));
- }
-}
-</script>
+                <!-- زانیاری کارتی بانکی FIB -->
+                <div class="fib-info-box" id="fibBox">
+                    <strong>زانیاری ناردنی پارە بە FIB:</strong><br>
+                    بۆ پارەدان لە ڕێگەی بەرنامەی FIB، بڕی پارەکە بنێرە بۆ ئەم ژمارەیە:<br>
+                    <span style="font-size: 1rem; font-weight: bold; color: #000;">0770 000 0000</span> <!-- ژمارەی FIB خۆت لێرە بنووسە -->
+                    <br>پاشان وێنەی پسوڵەکە لە واتسئەپ بنێرە.
+                </div>
+
+                <button class="submit-order-btn" onclick="sendOrder()">
+                    <i class="fab fa-whatsapp"></i> تەواوکردن و ناردنی داواکاری
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ==========================================
+        // لێرە دەتوانیت بەرهەمەکانت زیاد بکەیت یان بیگۆڕیت
+        // ==========================================
+        const products = [
+            {
+                id: 1,
+                name: "سێرەمی ڤیتامین سی بەڕیتانی",
+                category: "Skin care",
+                price: 25000,
+                size: "قەبارە: 30ml",
+                image: "https://images.unsplash.com/photo-1620916566398-39f1143ab7be?w=500",
+                description: "سێرەمێکی ئۆرجیناڵی بەڕیتانی بۆ ڕونکردنەوەی پێست و لابردنی پەڵە و ماندوێتی ڕوخسار. گونجاوە بۆ هەموو جۆرە پێستێک."
+            },
+            {
+                id: 2,
+                name: "سوورمەی لێوی مات (Soft Pink)",
+                category: "Makeup",
+                price: 15000,
+                size: "قەبارە: 4.5g",
+                image: "https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=500",
+                description: "ڕەنگێکی پەمەیی ناسک و کچانە، مانەوەی ٢٤ کاتژمێری هەیە بەبێ وشککردنەوەی لێوەکان."
+            },
+            {
+                id: 3,
+                name: "بۆنی خانمانی (Miss London)",
+                category: "Perfume",
+                price: 45000,
+                size: "قەبارە: 100ml",
+                image: "https://images.unsplash.com/photo-1541643600914-78b084683601?w=500",
+                description: "بۆنێکی شاهانە و ناسکی گوڵ و ڤانێلا، دروستکراوی وڵاتی بەڕیتانیا بە مانەوەیەکی زۆر بەرز."
+            },
+            {
+                id: 4,
+                name: "ماسکی قژی کۆلاجین",
+                category: "Hair care",
+                price: 22000,
+                size: "قەبارە: 250ml",
+                image: "https://images.unsplash.com/photo-1526947425960-945c6e72858f?w=500",
+                description: "چارەسەری سوتاوی و وشکی قژ دەکات و بریقە و نەرمییەکی بێوێنە دەدات بە تاڵەکانی قژ."
+            },
+            {
+                id: 5,
+                name: "سامپڵی بۆنی ئۆرجیناڵ (تێستەر)",
+                category: "Sample perfume",
+                price: 8000,
+                size: "قەبارە: 10ml",
+                image: "https://images.unsplash.com/photo-1594035910387-fea47794261f?w=500",
+                description: "تێستەری بۆنە بەڕیتانییەکان بە قەبارەی گونجاو بۆ ناو جانتا، تا بتوانیت پێش کڕینی قەبارە گەورەکە تاقیبکەیتەوە."
+            },
+            {
+                id: 6,
+                name: "بۆنی ناوماڵ (Rose & Vanilla)",
+                category: "Home perfume",
+                price: 18000,
+                size: "قەبارە: 150ml",
+                image: "https://images.unsplash.com/photo-1602928321679-560bb453f190?w=500",
+                description: "بۆنێکی ئارامبەخش و ناسک بۆ ناوماڵ و ژووری نوستن، بە دارەکانی بڵاوکردنەوەی بۆنەوە."
+            }
+        ];
+
+        // ژمارەی واتسئەپی ناز بیوتی لێرە بنووسە (بەبێ سفرەکەی سەرەتا و بە 964)
+        const WHATSAPP_NUMBER = "9647700000000"; 
+
+        let cart = [];
+        let currentCategory = 'Home';
+        let selectedPaymentMethod = 'Cash (کاش)';
+
+        // نیشاندانی بەرهەمەکان
+        function renderProducts(items) {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+
+            if (items.length === 0) {
+                grid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; padding: 30px; color: var(--text-muted);">هیچ بەرهەمێک نەدۆزرایەوە 🌸</p>';
+                return;
+            }
+
+            items.forEach(p => {
+                grid.innerHTML += `
+                    <div class="product-card">
+                        <div class="product-img-wrap" onclick="openProductDetail(${p.id})">
+                            <img src="${p.image}" alt="${p.name}">
+                            <span class="view-details-badge">قەبارە و وەسف</span>
+                        </div>
+                        <div class="product-info" onclick="openProductDetail(${p.id})">
+                            <div class="product-cat">${p.category}</div>
+                            <div class="product-name">${p.name}</div>
+                            <div class="product-price">${p.price.toLocaleString()} د.ع</div>
+                        </div>
+                        <button class="add-to-cart-btn" onclick="addToCart(${p.id})">
+                            <i class="fas fa-cart-plus"></i> زیادکردن بۆ سەبەتە
+                        </button>
+                    </div>
+                `;
+            });
+        }
+
+        // گۆڕینی بەشەکان
+        function filterCategory(category, btn) {
+            currentCategory = category;
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const titleEl = document.getElementById('currentSectionTitle');
+            if (category === 'Home') {
+                titleEl.innerText = 'هەموو بەرهەمەکان (Home Page)';
+                renderProducts(products);
+            } else {
+                titleEl.innerText = `بەشی ${category}`;
+                const filtered = products.filter(p => p.category === category);
+                renderProducts(filtered);
+            }
+        }
+
+        // گەڕان
+        function searchProducts() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = products.filter(p => 
+                (currentCategory === 'Home' || p.category === currentCategory) &&
+                (p.name.toLowerCase().includes(query) || p.description.toLowerCase().includes(query))
+            );
+            renderProducts(filtered);
+        }
+
+        // کردنەوەی پەنجەرەی وەسف و قەبارەی بەرهەم
+        function openProductDetail(id) {
+            const p = products.find(item => item.id === id);
+            document.getElementById('modalImg').src = p.image;
+            document.getElementById('modalCat').innerText = p.category;
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalSize').innerText = p.size;
+            document.getElementById('modalPrice').innerText = p.price.toLocaleString() + ' د.ع';
+            document.getElementById('modalDesc').innerText = p.description;
+            
+            const addBtn = document.getElementById('modalAddBtn');
+            addBtn.onclick = () => {
+                addToCart(p.id);
+                closeModal('productModal');
+            };
+
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        // زیادکردن بۆ سەبەتە (بێ سنوور)
+        function addToCart(id) {
+            const product = products.find(p => p.id === id);
+            const existing = cart.find(item => item.id === id);
+
+            if (existing) {
+                existing.qty += 1;
+            } else {
+                cart.push({ ...product, qty: 1 });
+            }
+            updateCartUI();
+        }
+
+        // گۆڕینی ژمارەی بەرهەم لە سەبەتەدا
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (!item) return;
+            item.qty += delta;
+            if (item.qty <= 0) {
+                cart = cart.filter(i => i.id !== id);
+            }
+            updateCartUI();
+        }
+
+        // نوێکردنەوەی سەبەتە و کۆکردنەوەی پارە
+        function updateCartUI() {
+            const totalCount = cart.reduce((sum, item) => sum + item.qty, 0);
+            document.getElementById('cartCount').innerText = totalCount;
+
+            const listEl = document.getElementById('cartItemsList');
+            listEl.innerHTML = '';
+
+            let totalMoney = 0;
+
+            if (cart.length === 0) {
+                listEl.innerHTML = '<p style="text-align:center; color: var(--text-muted); padding: 20px;">سەبەتەکەت بەتاڵە 🛍️</p>';
+            } else {
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.qty;
+                    totalMoney += itemTotal;
+                    listEl.innerHTML += `
+                        <div class="cart-item">
+                            <div>
+                                <div style="font-weight:700; font-size:0.9rem;">${item.name}</div>
+                                <div style="font-size:0.8rem; color:var(--dark-pink);">${item.price.toLocaleString()} د.ع × ${item.qty}</div>
+                            </div>
+                            <div class="qty-controls">
+                                <button class="qty-btn" onclick="changeQty(${item.id}, -1)">-</button>
+                                <span style="font-weight:bold;">${item.qty}</span>
+                                <button class="qty-btn" onclick="changeQty(${item.id}, 1)">+</button>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('cartTotal').innerText = totalMoney.toLocaleString() + ' د.ع';
+        }
+
+        function openCart() {
+            updateCartUI();
+            document.getElementById('cartModal').style.display = 'flex';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+        }
+
+        function closeModalOnBg(event, modalId) {
+            if (event.target.id === modalId) {
+                closeModal(modalId);
+            }
+        }
+
+        // هەڵبژاردنی شێوازی پارەدان (Cash یان FIB)
+        function selectPayment(method) {
+            document.getElementById('payCash').classList.remove('selected');
+            document.getElementById('payFib').classList.remove('selected');
+            const fibBox = document.getElementById('fibBox');
+
+            if (method === 'Cash') {
+                document.getElementById('payCash').classList.add('selected');
+                fibBox.style.display = 'none';
+                selectedPaymentMethod = 'کاش (لە کاتی گەیشتن)';
+            } else {
+                document.getElementById('payFib').classList.add('selected');
+                fibBox.style.display = 'block';
+                selectedPaymentMethod = 'کارتی بانکی FIB';
+            }
+        }
+
+        // ناردنی داواکاری بۆ واتسئەپ
+        function sendOrder() {
+            if (cart.length === 0) {
+                alert('تکایە سەرەتا بەرهەمێک بخەرە ناو سەبەتەکەت!');
+                return;
+            }
+
+            const name = document.getElementById('custName').value.trim();
+            const phone = document.getElementById('custPhone').value.trim();
+            const address = document.getElementById('custAddress').value.trim();
+
+            if (!name || !phone || !address) {
+                alert('تکایە ناوی خۆت و باوکت، ژمارە تەلەفۆن و ناونیشان بە تەواوی بنووسە 🌸');
+                return;
+            }
+
+            let orderText = `🎀 *داواکاری نوێ لە Naz Beauty* 🎀\n\n`;
+            orderText += `👤 *ناوی کڕیار:* ${name}\n`;
+            orderText += `📱 *ژمارە تەلەفۆن:* ${phone}\n`;
+            orderText += `📍 *ناونیشان:* ${address}\n`;
+            orderText += `💳 *شێوازی پارەدان:* ${selectedPaymentMethod}\n\n`;
+            orderText += `🛍️ *بەرهەمە داواکراوەکان:*\n`;
+
+            let total = 0;
+            cart.forEach((item, index) => {
+                const sub = item.price * item.qty;
+                total += sub;
+                orderText += `${index + 1}. ${item.name} (${item.size}) - ژمارە: ${item.qty} = ${sub.toLocaleString()} د.ع\n`;
+            });
+
+            orderText += `\n💰 *کۆی گشتی پارە:* ${total.toLocaleString()} د.ع`;
+
+            const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(orderText)}`;
+            window.open(url, '_blank');
+        }
+
+        // کارپێکردنی سەرەتایی
+        renderProducts(products);
+    </script>
 </body>
 </html>
