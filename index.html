@@ -4,166 +4,167 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Naz Beauty | Original Products</title>
+<title>Naz Beauty | Original Beauty Products</title>
+<meta name="description" content="Naz Beauty - Original Beauty Products from the UK">
 <style>
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: #fff9fa;
-  color: #38232d;
-}
-header {
-  background: #762d48;
-  color: white;
-  text-align: center;
-  padding: 28px 15px;
-}
-header h1 {
-  font-family: Georgia, serif;
-  font-size: 38px;
-  margin: 5px;
-}
-header p { letter-spacing: 2px; }
-nav {
-  background: #f4e5e9;
-  padding: 15px;
-  text-align: center;
-}
-nav a {
-  color: #762d48;
-  text-decoration: none;
-  margin: 0 12px;
-  font-weight: bold;
-}
-.hero {
-  text-align: center;
-  padding: 65px 20px;
-  background: linear-gradient(135deg,#f8e5eb,#fff9fa);
-}
-.hero h2 { font-size: 30px; }
-.hero p { font-size: 17px; line-height: 1.8; }
-.section { padding: 35px 18px; text-align: center; }
-.products {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(210px,1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-.product {
-  background: white;
-  padding: 25px 15px;
-  border-radius: 14px;
-  border: 1px solid #f0dce3;
-}
-.product .symbol { font-size: 55px; }
-.product h3 { color: #762d48; }
-.product p { line-height: 1.7; }
-button {
-  background: #762d48;
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 25px;
-  cursor: pointer;
-}
-.about {
-  background: #f4e5e9;
-  padding: 35px 20px;
-  text-align: center;
-  line-height: 2;
-}
-footer {
-  background: #762d48;
-  color: white;
-  text-align: center;
-  padding: 25px;
-  line-height: 2;
-}
-footer a { color: white; }
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Arial,sans-serif;background:#fffafb;color:#39252c}
+header{background:#fff;padding:18px 5%;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;border-bottom:1px solid #f2dce4}
+.logo{font-family:Georgia,serif;font-size:30px;font-weight:bold;color:#9d3459}
+.logo span{color:#d99aab}
+button{cursor:pointer;border:0}
+.lang{background:#9d3459;color:white;padding:10px 16px;border-radius:20px}
+.hero{background:linear-gradient(120deg,#f8e6ec,#fff8fa,#f4dce5);text-align:center;padding:75px 18px}
+.hero h1{font-family:Georgia,serif;color:#963653;font-size:42px;margin-bottom:15px}
+.hero p{font-size:17px;line-height:2;color:#72535e}
+.hero button{background:#963653;color:white;padding:14px 30px;border-radius:25px;margin-top:24px;font-size:16px}
+.section{padding:48px 5%;text-align:center}
+.section h2{font-family:Georgia,serif;color:#963653;font-size:28px;margin-bottom:12px}
+.sub{color:#92747e;margin-bottom:28px}
+.categories{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:15px}
+.category{background:white;border:1px solid #f0dce3;border-radius:16px;padding:25px 10px;cursor:pointer;transition:.2s}
+.category:hover{transform:translateY(-4px);box-shadow:0 6px 20px #ead4dc}
+.category .emoji{font-size:35px;margin-bottom:12px}
+.category h3{font-size:15px;color:#79334d}
+.search{width:min(100%,450px);padding:13px;border:1px solid #e7cbd5;border-radius:25px;margin:10px auto 25px;display:block;font-size:15px}
+.products{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:18px}
+.empty{background:#fff;padding:35px 15px;border-radius:15px;border:1px dashed #dcb8c6;color:#92747e;line-height:2;grid-column:1/-1}
+.about{background:#f9eaf0;line-height:2.2}
+.contact{background:#fff;padding:45px 15px;text-align:center;line-height:2}
+.contact a{color:#963653;text-decoration:none;font-weight:bold}
+footer{background:#633047;color:white;text-align:center;padding:25px;line-height:2}
+.hidden{display:none}
+#cart{position:fixed;bottom:20px;left:20px;background:#963653;color:white;padding:14px 20px;border-radius:30px;box-shadow:0 3px 15px #b98b9b;z-index:5}
+@media(max-width:500px){.hero h1{font-size:32px}.hero{padding:55px 15px}.logo{font-size:25px}}
 </style>
 </head>
 <body>
 
 <header>
-  <h1>Naz Beauty</h1>
-  <p>ORIGINAL BEAUTY PRODUCTS</p>
+<div class="logo">Naz <span>Beauty</span> 🎀</div>
+<button class="lang" onclick="changeLang()">English / کوردی</button>
 </header>
 
-<nav>
-  <a href="#home">سەرەکی</a>
-  <a href="#products">بەرهەمەکان</a>
-  <a href="#about">دەربارەمان</a>
-  <a href="#contact">پەیوەندیمان پێوە بکە</a>
-</nav>
+<section class="hero">
+<h1 id="heroTitle">بەخێربێن بۆ ناز بیوتی</h1>
+<p id="heroText">جوانییەکەت بەرهەمی ڕەسەن و کوالێتی بەرز دەوێت.<br>هەڵبژاردەیەکی تایبەت لە بەرهەمە جوانکارییەکانی بەریتانیا.</p>
+<button onclick="document.getElementById('categories').scrollIntoView({behavior:'smooth'})" id="shopBtn">بینینی بەرهەمەکان</button>
+</section>
 
-<section class="hero" id="home">
-  <h2>بەخێربێن بۆ Naz Beauty</h2>
-  <p>
-    جوانی بە کوالێتی و متمانە
-    <br>
-    هەڵبژاردەیەکی تایبەت لە بەرهەمە ئەسڵییەکانی جوانکاری
-    <br>
-    Makeup • Skincare • Perfumes • Haircare
-  </p>
+<section class="section" id="categories">
+<h2 id="catTitle">بەشەکانی ناز بیوتی</h2>
+<p class="sub" id="catSub">بەشی دڵخوازت هەڵبژێرە</p>
+<div class="categories">
+<div class="category" onclick="showCategory('makeup')"><div class="emoji">💄</div><h3 id="c1">میکاپ</h3></div>
+<div class="category" onclick="showCategory('skincare')"><div class="emoji">🧴</div><h3 id="c2">چاودێری پێست</h3></div>
+<div class="category" onclick="showCategory('perfume')"><div class="emoji">🌸</div><h3 id="c3">بۆن</h3></div>
+<div class="category" onclick="showCategory('haircare')"><div class="emoji">🎀</div><h3 id="c4">چاودێری قژ</h3></div>
+<div class="category" onclick="showCategory('home')"><div class="emoji">🏡</div><h3 id="c5">بۆنی ناوماڵ</h3></div>
+<div class="category" onclick="showCategory('diffuser')"><div class="emoji">🪻</div><h3 id="c6">بۆنی دابەشکاری</h3></div>
+</div>
 </section>
 
 <section class="section" id="products">
-  <h2>بەرهەمەکانمان</h2>
-  <div class="products">
-
-    <div class="product">
-      <div class="symbol">💄</div>
-      <h3>Makeup</h3>
-      <p>ماکیاژی ئەسڵی لە براندە جیاوازەکان</p>
-      <button>بینینی بەرهەمەکان</button>
-    </div>
-
-    <div class="product">
-      <div class="symbol">🧴</div>
-      <h3>Skincare</h3>
-      <p>بەرهەمەکانی چاودێری پێست</p>
-      <button>بینینی بەرهەمەکان</button>
-    </div>
-
-    <div class="product">
-      <div class="symbol">🌸</div>
-      <h3>Perfumes</h3>
-      <p>بۆن و بەدی میستی جوان</p>
-      <button>بینینی بەرهەمەکان</button>
-    </div>
-
-    <div class="product">
-      <div class="symbol">🎀</div>
-      <h3>Haircare</h3>
-      <p>بەرهەمەکانی چاودێری قژ</p>
-      <button>بینینی بەرهەمەکان</button>
-    </div>
-
-  </div>
+<h2 id="productTitle">بەرهەمەکانمان</h2>
+<input class="search" id="search" placeholder="گەڕان بەدوای بەرهەم..." oninput="searchProducts()">
+<div class="products" id="productGrid">
+<div class="empty" id="empty">
+🌷 بە زوویی بەرهەمە جوانەکانمان لێرە دادەنێین.
+<br>Stay tuned for our original beauty products!
+</div>
+</div>
 </section>
 
-<section class="about" id="about">
-  <h2>دەربارەی Naz Beauty</h2>
-  <p>
-    Naz Beauty پێشکەشکەری بەرهەمە ئەسڵییەکانی جوانکارییە
-    لە براندە جیاوازەکان، بە گرنگیدان بە کوالێتی و متمانە.
-    هەڵبژاردەی تایبەتمان بۆ ئێوە.
-  </p>
+<section class="section about">
+<h2 id="aboutTitle">بۆچی Naz Beauty؟</h2>
+<p id="aboutText">ئێمە گرنگی بە کوالێتی، متمانە و ڕەسەنایەتی دەدەین. هەڵبژاردەیەکی تایبەت لە براندە جیاوازەکان، بەرهەمی ڕەسەن و کوالێتی باش لە بەریتانیاوە.</p>
 </section>
 
-<footer id="contact">
-  <h2>Naz Beauty</h2>
-  <p>سوپاس بۆ متمانەتان ❤️</p>
-  <p>
-    Instagram:
-    <a href="https://www.instagram.com/nazz._.beautyy/">
-      @nazz._.beautyy
-    </a>
-  </p>
-  <p>© 2026 Naz Beauty</p>
+<section class="contact">
+<h2 id="contactTitle">پەیوەندیمان پێوە بکە</h2>
+<p id="contactText">بۆ زانیاری و داواکاری، لە ڕێگەی پەیجەکانمانەوە پەیوەندیمان پێوە بکەن.</p>
+<p>Instagram: <a href="https://instagram.com/nazz._.beautyy" target="_blank">@nazz._.beautyy</a></p>
+<p>Snapchat: <a href="https://www.snapchat.com/add/nazz.beautyy" target="_blank">nazz.beautyy</a></p>
+<p>TikTok: <a href="https://www.tiktok.com/@nazz._.beautyy" target="_blank">nazz._.beautyy</a></p>
+</section>
+
+<footer>
+<div>🎀 Naz Beauty 🎀</div>
+<div id="footerText">Original Products | Beauty from the UK</div>
+<div>© 2026 Naz Beauty</div>
 </footer>
 
+<button id="cart" onclick="showCart()">🛍️ <span id="cartText">سەبەتە</span> (<span id="cartCount">0</span>)</button>
+
+<script>
+let english=false;
+let selectedCategory='all';
+let cart=[];
+
+// بەرهەمەکان دواتر لێرە زیاد دەکرێن
+const products=[];
+
+function changeLang(){
+ english=!english;
+ document.documentElement.lang=english?'en':'ku';
+ document.documentElement.dir=english?'ltr':'rtl';
+ const t={
+ ku:['بەخێربێن بۆ ناز بیوتی','جوانییەکەت بەرهەمی ڕەسەن و کوالێتی بەرز دەوێت.<br>هەڵبژاردەیەکی تایبەت لە بەرهەمە جوانکارییەکانی بەریتانیا.','بینینی بەرهەمەکان','بەشەکانی ناز بیوتی','بەشی دڵخوازت هەڵبژێرە','میکاپ','چاودێری پێست','بۆن','چاودێری قژ','بۆنی ناوماڵ','بۆنی دابەشکاری','بەرهەمەکانمان','گەڕان بەدوای بەرهەم...','🌷 بە زوویی بەرهەمە جوانەکانمان لێرە دادەنێین.','بۆچی Naz Beauty؟','ئێمە گرنگی بە کوالێتی، متمانە و ڕەسەنایەتی دەدەین. هەڵبژاردەیەکی تایبەت لە براندە جیاوازەکان، بەرهەمی ڕەسەن و کوالێتی باش لە بەریتانیاوە.','پەیوەندیمان پێوە بکە','بۆ زانیاری و داواکاری، لە ڕێگەی پەیجەکانمانەوە پەیوەندیمان پێوە بکەن.','سەبەتە','Original Products | Beauty from the UK'],
+ en:['Welcome to Naz Beauty','Discover original beauty products and trusted quality.<br>A special selection of beauty products from the UK.','Explore Products','Shop by Category','Choose your favourite category','Makeup','Skincare','Perfumes','Haircare','Home Fragrance','Diffuser Scents','Our Products','Search products...','🌷 Our beautiful products will be available here soon.','Why Naz Beauty?','We care about quality, trust and authenticity. A special selection of different brands and original beauty products from the UK.','Contact Us','For information and orders, contact us through our social media pages.','Cart','Original Products | Beauty from the UK']
+ };
+ let a=english?t.en:t.ku;
+ ['heroTitle','heroText','shopBtn','catTitle','catSub','c1','c2','c3','c4','c5','c6','productTitle'].forEach((id,i)=>document.getElementById(id).innerHTML=a[i]);
+ document.getElementById('search').placeholder=a[12];
+ document.getElementById('empty').innerHTML=a[13]+'<br>Stay tuned for our original beauty products!';
+ document.getElementById('aboutTitle').innerHTML=a[14];
+ document.getElementById('aboutText').innerHTML=a[15];
+ document.getElementById('contactTitle').innerHTML=a[16];
+ document.getElementById('contactText').innerHTML=a[17];
+ document.getElementById('cartText').innerHTML=a[18];
+ document.getElementById('footerText').innerHTML=a[19];
+}
+
+function showCategory(category){
+ selectedCategory=category;
+ document.getElementById('products').scrollIntoView({behavior:'smooth'});
+ renderProducts();
+}
+
+function searchProducts(){
+ renderProducts();
+}
+
+function renderProducts(){
+ const grid=document.getElementById('productGrid');
+ const term=document.getElementById('search').value.toLowerCase();
+ const filtered=products.filter(p=>
+ (selectedCategory==='all'||p.category===selectedCategory)&&
+ p.name.toLowerCase().includes(term)
+ );
+ if(filtered.length===0){
+ grid.innerHTML='<div class="empty">'+(english?'Products will be added soon.':'بە زوویی بەرهەمەکانمان زیاد دەکەین. 🌷')+'</div>';
+ return;
+ }
+ grid.innerHTML=filtered.map((p,i)=>`
+ <div class="category">
+ <div class="emoji">🌸</div>
+ <h3>${p.name}</h3>
+ <p>${p.price}</p>
+ <button class="lang" onclick="addToCart('${p.name}',${i})">${english?'Add to cart':'زیادکردن بۆ سەبەتە'}</button>
+ </div>`).join('');
+}
+
+function addToCart(name){
+ cart.push(name);
+ document.getElementById('cartCount').innerText=cart.length;
+}
+function showCart(){
+ if(cart.length===0){
+ alert(english?'Your cart is empty.':'سەبەتەکەت بەتاڵە.');
+ }else{
+ alert((english?'Your cart: ':'بەرهەمەکانت: ')+cart.join(', '));
+ }
+}
+</script>
 </body>
 </html>
